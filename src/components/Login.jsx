@@ -1,6 +1,12 @@
 import axios from "axios";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+import { useNavigate } from "react-router-dom";
 
 export const Login = () => {
+  const swalert = withReactContent(Swal);
+  const navigate = useNavigate();
+
   const submitHandler = (e) => {
     e.preventDefault();
 
@@ -14,25 +20,34 @@ export const Login = () => {
     console.log("email: ", email);
     console.log("password: ", password);
     if (email === "" || password === "") {
+      swalert.fire(
+        "Oops!",
+        "Los campos email y password no se puede dejar vacíos",
+        "warning"
+      );
       console.log("Los campos email y password no se puede dejar vacíos");
       return;
     }
     if (email !== "" && !regexEmail.test(email)) {
+      swalert.fire("Oops!", "Debes ingresar un email válido", "warning");
       console.log("Debes ingresar un email válido");
       return;
     }
 
     if (email !== "challenge@alkemy.org" || password !== "react") {
+      swalert.fire("Opps!", "Credenciales incorrectas", "warning");
       console.log("Credenciales incorrectas");
       return;
     }
 
-    console.log("Datos validados OK");
+    Swal.fire("Datos enviados correctamente", "", "success");
 
     axios
       .post("http://challenge-react.alkemy.org", { email, password })
       .then((res) => {
-        console.log(res.data);
+        const { token } = res.data;
+        localStorage.setItem("token", token);
+        navigate("/listado");
       });
   };
 
