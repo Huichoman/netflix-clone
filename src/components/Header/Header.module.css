@@ -1,0 +1,22 @@
+
+
+div {
+  background-color: var(--color-black);
+}
+
+nav{
+  background-color: var(--color-black);
+}
+
+link{
+background-color: var(--color-black);
+}
+
+a {
+  background-color: var(--color-black);
+}
+
+.headerDiv {
+
+  font-size: 1.2rem;
+}

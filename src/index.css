@@ -1,0 +1,7 @@
+@import './variables.css';
+
+*{
+    background-color: var(--color-gray-clear);
+    font-size: 12px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
