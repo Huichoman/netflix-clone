@@ -1,0 +1,12 @@
+.LoginContainer {
+    display: flex;
+    flex-direction: column;
+    height: 90vh;
+    justify-content: center;
+    align-items: center;
+    background-image: url("../../images/netflix-bg.jpg");
+
+    /* border-color: rgb(72, 255, 0);
+    border-width: 2px;
+    border-style: solid; */
+}

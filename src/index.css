@@ -1,7 +1,18 @@
 @import './variables.css';
 
 *{
-    background-color: var(--color-gray-clear);
+    background-color: transparent;
+    color: rgb(94, 94, 91);
     font-size: 12px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    padding: 0;
+    margin: 0;
 }
+
+a:link, a:visited, a:active {
+    text-decoration:none;
+}
+/* 
+body {
+    background-image: url(./images/netflix-bg.jpg)
+} */

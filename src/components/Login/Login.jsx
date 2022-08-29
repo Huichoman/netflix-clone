@@ -2,6 +2,7 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import { useNavigate } from "react-router-dom";
+import styles from "./Login.module.css";
 
 export const Login = () => {
   const swalert = withReactContent(Swal);
@@ -52,24 +53,24 @@ export const Login = () => {
   };
 
   return (
-    <>
-      <h2>Formulario de login</h2>
-      <form onSubmit={submitHandler}>
+    <div className={styles.LoginContainer}>
+      <form onSubmit={submitHandler} className={styles.LoginForm}>
+        <h2>Sign In</h2>
         <label>
           <span>Correo electrónico:</span>
           <br />
-          <input type="text" name="email" />
+          <input type="text" name="email" placeholder="Email" required />
           <br />
         </label>
 
         <label>
           <span>Contraseña:</span>
           <br />
-          <input type="password" name="password" />
+          <input type="password" name="password" placeholder="Password" />
         </label>
         <br />
         <button type="submit">Ingresar</button>
       </form>
-    </>
+    </div>
   );
 };
