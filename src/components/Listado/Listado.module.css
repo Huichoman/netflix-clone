@@ -1,12 +1,33 @@
-.LoginContainer {
+.listadoContainer {
     display: flex;
-    flex-direction: column;
-    height: 90vh;
+    flex-direction: row;
+    flex-wrap: wrap;
+    height: auto;    
     justify-content: center;
     align-items: center;
-    background-image: url("../../images/netflix-bg.jpg");
-
-    /* border-color: rgb(72, 255, 0);
+    background-image: url("../../images/netflix-bg-dark.jpg");
+    background-attachment: fixed;
+    border-color: rgb(72, 255, 0);
     border-width: 2px;
-    border-style: solid; */
+    border-style: solid;
+}
+
+.movieCardContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 30em;
+    width: 25em;
+
+    margin: 1em;
+    
+
+    border-color: rgb(0, 170, 255);
+    border-width: 1px;
+    border-style: solid;
+}
+
+.cardImage {
+
+   width: auto;
 }

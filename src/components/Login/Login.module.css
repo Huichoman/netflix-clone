@@ -50,6 +50,7 @@ button {
     font-weight: 700;
     padding: 0.5em;
     border-radius: 0.4em;
+    border-width: 0px;
 }
 
 input:-webkit-autofill,
