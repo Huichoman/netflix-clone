@@ -25,6 +25,14 @@ function App() {
             </ProtectedRoute>
           }
         />
+        <Route
+          path="/moviedetail"
+          element={
+            <ProtectedRoute>
+              <com.MovieDetail />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
       <com.Footer />
     </>

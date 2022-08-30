@@ -69,7 +69,9 @@ export const Login = () => {
           <input type="password" name="password" placeholder="Password" />
         </label>
         <br />
-        <button type="submit">Ingresar</button>
+        <button type="submit" className={styles.loginButton}>
+          Ingresar
+        </button>
       </form>
     </div>
   );

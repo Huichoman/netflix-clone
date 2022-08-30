@@ -39,7 +39,7 @@ input {
     border-style: none;
 }
 
-button {
+.loginButton {
     background-color: var(--color-red);
     color: var(--color-gray-clear);
     padding: 0.5em;
