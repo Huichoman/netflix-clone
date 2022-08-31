@@ -46,3 +46,38 @@ header {
   color: rgb(255, 255, 255);
 
 }
+
+.swalertPopup{
+  border-color: var(--color-red) !important;
+  border-width: 0px !important;
+  border-style: solid !important;
+  background-color: var(--color-swalert-bg) !important;
+  height: 20em;
+  width: 20em;
+
+}
+
+.swalertTitle {
+  color: rgb(249, 249, 254) !important;
+}
+
+.swalertHtml {
+  color: rgb(244, 240, 240) !important;
+  background-color: transparent;
+}
+
+.swalertActions {
+  background-color: transparent;
+  
+}
+
+.swalertConfirmButton {
+  background-color: var(--color-red)!important;
+  color: azure;
+  width: 6rem;
+  height: 4.5rem;
+  border-radius: 0.5em !important;
+  font-size: 1.4rem !important;
+  border-style: none;
+  
+}

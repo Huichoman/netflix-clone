@@ -19,11 +19,11 @@ export const Listado = () => {
         swalert.fire("Hubo un error", "Intenta más tarde");
       });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [setMoviesList]);
 
-  useEffect(() => {
-    console.log(moviesList);
-  }, [moviesList]);
+  // useEffect(() => {
+  //   console.log(moviesList);
+  // }, [moviesList]);
 
   return (
     <>
