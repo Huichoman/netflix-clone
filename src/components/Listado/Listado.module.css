@@ -2,14 +2,14 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    height: auto;    
+    min-height: 90vh;    
     justify-content: center;
     align-items: center;
     background-image: url("../../images/netflix-bg-dark.jpg");
     background-attachment: fixed;
-    border-color: rgb(72, 255, 0);
+    /* border-color: rgb(72, 255, 0);
     border-width: 2px;
-    border-style: solid;
+    border-style: solid; */
 }
 
 .movieCardContainer {
@@ -36,3 +36,12 @@
 h3 {
     font-size: 1.2em;
 }
+
+div.fallback {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: pink;
+  }

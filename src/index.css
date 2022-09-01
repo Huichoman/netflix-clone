@@ -13,3 +13,10 @@ a:link, a:visited, a:active {
     text-decoration:none;
 }
 
+
+html {
+    background-color: rgb(19, 18, 18);
+}
+ body {
+    background-color: rgb(11, 11, 11);
+ }

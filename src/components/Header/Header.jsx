@@ -54,9 +54,7 @@ export const Header = () => {
             Netaflix
           </a>
           <Link to="/">Home</Link>
-          <Link to="/listado" onClick={handleClick}>
-            Listado
-          </Link>
+          <Link to="/listado">Listado</Link>
           <Link to="/moviedetail">Contacto</Link>
         </nav>
       </div>
