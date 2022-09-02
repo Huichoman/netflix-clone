@@ -1,4 +1,4 @@
-import { useEffect, useState, useTransition, startTransition } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "./Listado.module.css";
 import axios from "axios";
@@ -12,7 +12,7 @@ export const Listado = () => {
 
   useEffect(() => {
     const endPoint =
-      "https://api.themoviedb.org/3/discover/movie?api_key=f5e25946824bad668b30933e6ba5d1e8&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=true&page=1&with_watch_monetization_types=flatrate";
+      "https://api.themoviedb.org/3/discover/movie?api_key=f5e25946824bad668b30933e6ba5d1e8&language=es-ES&sort_by=popularity.desc&include_adult=false&include_video=true&page=1&with_watch_monetization_types=flatrate";
     axios
       .get(endPoint)
       .then((response) => setMoviesList(response.data.results))
@@ -47,7 +47,7 @@ export const Listado = () => {
                 alt="movie img"
               />
               <h3>{title}</h3>
-              <Link to={`/moviedetail?id=${id}`}>View detail</Link>
+              <Link to={`/moviedetail?movieID=${id}`}>View detail</Link>
             </div>
           )
         )}
