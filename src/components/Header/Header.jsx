@@ -17,29 +17,29 @@ export const Header = () => {
     console.log("onHandleClick token", token);
     if (!token) {
       console.log("Sin acceso compadre");
-      // swalert.fire({
-      //   customClass: {
-      //     popup: [styles.swalertPopup],
-      //     title: [styles.swalertTitle],
-      //     htmlContainer: [styles.swalertHtml],
-      //     actions: [styles.swalertActions],
-      //     confirmButton: [styles.swalertConfirmButton],
-      //   },
-      //   showClass: {
-      //     popup: `
-      //     animate__animated
-      //     animate__zoomIn
-      //     animate__faster
-      //   `,
-      //   },
-      //   hideClass: {
-      //     popup: "animate__animated animate__flipOutX",
-      //   },
-      //   title: "Error",
-      //   text: "Necesitas loguearte para acceder a este contenido",
-      //   backdrop: false,
-      //   buttonsStyling: false,
-      // });
+      swalert.fire({
+        customClass: {
+          popup: [styles.swalertPopup],
+          title: [styles.swalertTitle],
+          htmlContainer: [styles.swalertHtml],
+          actions: [styles.swalertActions],
+          confirmButton: [styles.swalertConfirmButton],
+        },
+        showClass: {
+          popup: `
+          animate__animated
+          animate__zoomIn
+          animate__faster
+        `,
+        },
+        hideClass: {
+          popup: "animate__animated animate__flipOutX",
+        },
+        title: "Error",
+        text: "Necesitas loguearte para acceder a este contenido",
+        backdrop: false,
+        buttonsStyling: false,
+      });
       return;
     }
     console.log("Hacia el listado");
@@ -54,7 +54,9 @@ export const Header = () => {
             Netaflix
           </a>
           <Link to="/">Home</Link>
-          <Link to="/listado">Listado</Link>
+          <Link to="/listado" onClick={handleClick}>
+            Listado
+          </Link>
           <Link to="/moviedetail">Contacto</Link>
         </nav>
       </div>

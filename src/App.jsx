@@ -23,27 +23,27 @@ function App() {
   return (
     <>
       <com.Header />
-      <AnimatePresence mode="wait">
-        <Routes>
-          <Route path="/" element={<com.Login />} />
-          <Route
-            path="/listado"
-            element={
-              <ProtectedRoute>
-                <com.Listado />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/moviedetail"
-            element={
-              <ProtectedRoute>
-                <com.MovieDetail />
-              </ProtectedRoute>
-            }
-          />
-        </Routes>
-      </AnimatePresence>
+      {/* <AnimatePresence mode="wait"> */}
+      <Routes>
+        <Route path="/" element={<com.Login />} />
+        <Route
+          path="/listado"
+          element={
+            <ProtectedRoute>
+              <com.Listado />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/moviedetail"
+          element={
+            <ProtectedRoute>
+              <com.MovieDetail />
+            </ProtectedRoute>
+          }
+        />
+      </Routes>
+      {/* </AnimatePresence> */}
       <com.Footer />
     </>
   );

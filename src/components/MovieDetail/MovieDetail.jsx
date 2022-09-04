@@ -3,9 +3,13 @@ import { useEffect, useState } from "react";
 // import { Navigate } from "react-router-dom";
 import axios from "axios";
 
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+
 export const MovieDetail = () => {
   // let token = localStorage.getItem("token");
 
+  const swalert = withReactContent(Swal);
   let query = new URLSearchParams(window.location.search);
   let movieID = query.get("movieID");
   const [movieDetail, setMovieDetail] = useState([]);
@@ -40,6 +44,33 @@ export const MovieDetail = () => {
     // });
   }, [movieID]);
 
+  const swalertModalTest = (e) => {
+    swalert.fire();
+    swalert.fire({
+      customClass: {
+        // container: [styles.swalertContainerFalse],
+        popup: [styles.swalertPopup],
+        title: [styles.swalertTitle],
+        htmlContainer: [styles.swalertHtml],
+        actions: [styles.swalertActions],
+        confirmButton: [styles.swalertConfirmButton],
+      },
+      showClass: {
+        popup: "animate__animated animate__flipInX",
+        backdrop: "swal2-backdrop-show",
+        icon: "swal2-icon-show",
+      },
+      hideClass: {
+        popup: "animate__animated animate__flipOutX",
+      },
+      title: "Error",
+      text: "Necesitas loguearte para acceder a este contenido",
+      backdrop: false,
+
+      // buttonsStyling: false,
+    });
+  };
+
   return (
     <div className={styles.movieDetailContainer}>
       <div
@@ -49,9 +80,12 @@ export const MovieDetail = () => {
         }}
       >
         <div className={styles.infoBackgroundContainer}>
-          <div className={styles.infoContainer}>
+          <div className={styles.infoContainer} id="detail">
             <h1 className={styles.movieTitle}>{movieDetail.title}</h1>
             <h3 className={styles.overviewText}>{movieDetail.overview}</h3>
+            <button className={styles.modalButton} onClick={swalertModalTest}>
+              Test
+            </button>
           </div>
           <div className={styles.rightDiv}>
             <h1>Aimi Memo</h1>

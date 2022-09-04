@@ -22,6 +22,33 @@ export const Listado = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const swalertModalTest = () => {
+    swalert.fire();
+    swalert.fire({
+      customClass: {
+        popup: [styles.swalertPopup],
+        title: [styles.swalertTitle],
+        htmlContainer: [styles.swalertHtml],
+        actions: [styles.swalertActions],
+        confirmButton: [styles.swalertConfirmButton],
+      },
+      showClass: {
+        popup: `
+        animate__animated
+        animate__zoomIn
+        animate__faster
+      `,
+      },
+      hideClass: {
+        popup: "animate__animated animate__flipOutX",
+      },
+      title: "Error",
+      text: "Necesitas loguearte para acceder a este contenido",
+      backdrop: false,
+      buttonsStyling: false,
+    });
+  };
+
   // const endPoint =
   //   "https://api.themoviedb.org/3/discover/movie?api_key=f5e25946824bad668b30933e6ba5d1e8&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=true&page=1&with_watch_monetization_types=flatrate";
 
@@ -48,6 +75,9 @@ export const Listado = () => {
               />
               <h3>{title}</h3>
               <Link to={`/moviedetail?movieID=${id}`}>View detail</Link>
+              <button className={styles.modalButton} onClick={swalertModalTest}>
+                Test
+              </button>
             </div>
           )
         )}
