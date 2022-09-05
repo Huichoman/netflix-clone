@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import styles from "./Listado.module.css";
 import axios from "axios";
@@ -22,7 +22,18 @@ export const Listado = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const swalertModalTest = () => {
+  const swalertModalTest = (id) => {
+    const element = document.getElementById(id);
+    console.log("elemento", element);
+    let coords = element.getBoundingClientRect();
+    document.documentElement.style.cssText =
+      "--posLeft: " + coords.left + "px; --posTop: " + coords.top + "px;";
+    // document.documentElement.setAttribute(
+    //   "style",
+    //   "--posTop: " + coords.top + "px"
+    // );
+
+    console.log("coordenadas", coords);
     swalert.fire();
     swalert.fire({
       customClass: {
@@ -46,6 +57,7 @@ export const Listado = () => {
       text: "Necesitas loguearte para acceder a este contenido",
       backdrop: false,
       buttonsStyling: false,
+      target: document.getElementById(id),
     });
   };
 
@@ -67,17 +79,22 @@ export const Listado = () => {
       <div className={styles.listadoContainer}>
         {moviesList.map(
           ({ id, title, poster_path, overview, backdrop_path }) => (
-            <div key={id} className={styles.movieCardContainer}>
+            <div key={id} className={styles.movieCardContainer} id={id}>
               <img
                 src={`https://image.tmdb.org/t/p/w342/${backdrop_path}`}
                 className={styles.cardImage}
                 alt="movie img"
               />
-              <h3>{title}</h3>
+              <h3>{title} </h3>
               <Link to={`/moviedetail?movieID=${id}`}>View detail</Link>
-              <button className={styles.modalButton} onClick={swalertModalTest}>
-                Test
-              </button>
+              <div>
+                <button
+                  className={styles.modalButton}
+                  onClick={() => swalertModalTest(id)}
+                >
+                  Test
+                </button>
+              </div>
             </div>
           )
         )}

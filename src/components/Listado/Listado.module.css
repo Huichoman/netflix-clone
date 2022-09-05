@@ -1,3 +1,6 @@
+:local{
+    --color-red: #8edb00!important;
+}
 .listadoContainer {
     display: flex;
     flex-direction: row;
@@ -53,7 +56,9 @@ div.fallback {
     background-color: var(--color-swalert-bg) !important;
     height: 20em;
     width: 20em;
-  
+    position: absolute;
+    left:var(--posLeft);
+    top: var(--posTop);
   }
   
   .swalertTitle {

@@ -8,4 +8,6 @@
     --color-input-active: #E8F0FE;
     --color-input-bg: #333;
     --color-swalert-bg: #333;
+    --posLeft: 0px;
+    --posTop: -100px;
 }

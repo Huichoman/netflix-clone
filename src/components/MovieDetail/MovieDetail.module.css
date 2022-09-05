@@ -81,15 +81,14 @@
 }
 
 
-.swalertContainerFalse { 
-display: none;
+/* .swalertContainer { 
+    position: absolute !important;
+    left: 10px !important;
+    top: 150px !important;
 
-}
+} */
 
-.swalertContainerFalse { 
-    display:grid;
-   
-}
+
 .swalertPopup{
     border-color: var(--color-red) !important;
     border-width: 0px !important;
@@ -97,7 +96,9 @@ display: none;
     background-color: var(--color-swalert-bg) !important;
     height: 20em;
     width: 20em;
-  
+    /* position: absolute !important;
+    left: 10px !important;
+    top: 150px !important; */
   }
   
   .swalertTitle {
@@ -140,3 +141,4 @@ display: none;
     cursor: pointer;
     margin-top: 3rem;
 }
+
