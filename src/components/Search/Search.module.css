@@ -1,0 +1,49 @@
+.searchFormContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    height: 2.5rem;
+    padding: 0px;
+
+    /* border-width: 1px;
+    border-color: aqua;
+    border-style: solid; */
+}
+
+.inputTextContainer {
+    height: 1.8rem;
+    margin: 0px;
+    padding: 0.2rem 0.2rem 0.2rem 0.5rem;
+    font-size: 1.2rem;
+    border-width: 1px;
+    background-color: var(--color-gray-soft);
+
+    /* border-color: rgb(238, 74, 211);
+    border-style: solid; */
+    
+}
+
+.submitButton {
+    height: 2.5rem;
+    width: 6rem;
+    background-color: var(--color-red);
+    color: aliceblue;
+    font-size: 1.2rem;
+    border-radius: 0.4rem;
+    margin-left: 0.5rem;
+
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: rgba(167, 165, 165, 0.837);
+    opacity: 1; /* Firefox */
+  }
+  
+  :-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: rgba(167, 165, 165, 0.837);
+  }
+  
+  ::-ms-input-placeholder { /* Microsoft Edge */
+    color: rgba(167, 165, 165, 0.837);
+  }

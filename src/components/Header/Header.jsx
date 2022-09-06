@@ -3,6 +3,7 @@ import styles from "./Header.module.css";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import "animate.css";
+import { Search } from "../Search/Search";
 
 export const Header = () => {
   const token = localStorage.getItem("token");
@@ -48,8 +49,8 @@ export const Header = () => {
 
   return (
     <header>
-      <div className={styles.headerDiv}>
-        <nav>
+      <nav>
+        <div className={styles.headerDiv}>
           <a href="/" className={styles.headerTitle}>
             Netaflix
           </a>
@@ -57,9 +58,11 @@ export const Header = () => {
           <Link to="/listado" onClick={handleClick}>
             Listado
           </Link>
-          <Link to="/moviedetail">Contacto</Link>
-        </nav>
-      </div>
+          <div className={styles.push}>
+            <Search />
+          </div>
+        </div>
+      </nav>
     </header>
   );
 };

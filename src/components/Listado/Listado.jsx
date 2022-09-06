@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "./Listado.module.css";
 import axios from "axios";
@@ -9,6 +9,7 @@ import { AnimatedPage } from "../AnimatedPage/AnimatedPage";
 export const Listado = () => {
   const swalert = withReactContent(Swal);
   const [moviesList, setMoviesList] = useState([]);
+  console.log("movieList", moviesList);
 
   useEffect(() => {
     const endPoint =
@@ -17,6 +18,7 @@ export const Listado = () => {
       .get(endPoint)
       .then((response) => setMoviesList(response.data.results))
       .catch((error) => {
+        // console.log(error);
         swalert.fire("Hubo un error", "Intenta más tarde");
       });
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -28,10 +30,6 @@ export const Listado = () => {
     let coords = element.getBoundingClientRect();
     document.documentElement.style.cssText =
       "--posLeft: " + coords.left + "px; --posTop: " + coords.top + "px;";
-    // document.documentElement.setAttribute(
-    //   "style",
-    //   "--posTop: " + coords.top + "px"
-    // );
 
     console.log("coordenadas", coords);
     swalert.fire();
