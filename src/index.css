@@ -1,5 +1,5 @@
 @import './variables.css';
-
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Lato:wght@300&family=Noto+Emoji&display=swap');
 *{
     background-color: transparent;
     color: rgb(94, 94, 91);

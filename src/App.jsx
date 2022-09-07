@@ -11,7 +11,7 @@ import styles from "./App.module.css";
 const ProtectedRoute = ({ children }) => {
   // const swalert = withReactContent(Swal);
   const token = localStorage.getItem("token");
-  console.log("token app", token);
+
   if (!token) {
     return <Navigate to="/" replace />;
   }
@@ -20,6 +20,10 @@ const ProtectedRoute = ({ children }) => {
 };
 
 function App() {
+  const addRemoveFavs = () => {
+    console.log("Favs ok");
+  };
+
   return (
     <>
       <com.Header />
@@ -30,7 +34,7 @@ function App() {
           path="/listado"
           element={
             <ProtectedRoute>
-              <com.Listado />
+              <com.Listado addRemoveFavs={addRemoveFavs} />
             </ProtectedRoute>
           }
         />
@@ -39,6 +43,14 @@ function App() {
           element={
             <ProtectedRoute>
               <com.MovieDetail />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/resultados"
+          element={
+            <ProtectedRoute>
+              <com.Resultados addRemoveFavs={addRemoveFavs} />
             </ProtectedRoute>
           }
         />

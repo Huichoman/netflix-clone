@@ -18,14 +18,18 @@
 .overviewContainer {
 
     display: flex;
-    flex-direction: row;
-    min-height: 90vh;
+    flex-direction: row;    
     width: 90vw;
+    min-height: 90vh;
     justify-content: left;
     align-items: top;
-    background-size:contain;
+    background-size: contain;
     background-repeat: no-repeat;
     background-position: right;
+
+     /* border-color: rgb(72, 255, 0);
+    border-width: 2px;
+    border-style: solid; */
 }
 
 .infoBackgroundContainer {
