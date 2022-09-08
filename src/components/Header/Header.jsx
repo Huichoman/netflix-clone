@@ -6,7 +6,7 @@ import "animate.css";
 import { Search } from "../Search/Search";
 
 export const Header = () => {
-  const token = localStorage.getItem("token");
+  const token = sessionStorage.getItem("token");
   const swalert = withReactContent(Swal);
 
   console.log("token", token);
@@ -58,6 +58,7 @@ export const Header = () => {
           <Link to="/listado" onClick={handleClick}>
             Listado
           </Link>
+          <Link to="/favorites">Favoritos</Link>
           <div className={styles.push}>
             <Search />
           </div>

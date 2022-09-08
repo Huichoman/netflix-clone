@@ -21,7 +21,7 @@ export const Resultados = () => {
   return (
     <div className={styles.listadoContainer}>
       {movieList.map(({ title, backdrop_path, id, poster_path }) => (
-        <div className={styles.movieCardContainer}>
+        <div className={styles.movieCardContainer} key={id}>
           <img
             src={`https://image.tmdb.org/t/p/w342/${
               backdrop_path ? backdrop_path : poster_path

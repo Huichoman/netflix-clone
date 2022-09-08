@@ -3,6 +3,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import * as com from "./components";
 import { AnimatePresence } from "framer-motion";
 import styles from "./App.module.css";
+import { useEffect, useState } from "react";
 
 // import Swal from "sweetalert2";
 // import withReactContent from "sweetalert2-react-content";
@@ -10,8 +11,7 @@ import styles from "./App.module.css";
 
 const ProtectedRoute = ({ children }) => {
   // const swalert = withReactContent(Swal);
-  const token = localStorage.getItem("token");
-
+  const token = sessionStorage.getItem("token");
   if (!token) {
     return <Navigate to="/" replace />;
   }
@@ -20,8 +20,40 @@ const ProtectedRoute = ({ children }) => {
 };
 
 function App() {
-  const addRemoveFavs = () => {
-    console.log("Favs ok");
+  const [favMoviesList, setFavMoviesList] = useState([]);
+  const favMovies = localStorage.getItem("favMovies");
+  let tempFavMovies;
+
+  if (!favMovies) {
+    tempFavMovies = [];
+  } else {
+    tempFavMovies = JSON.parse(favMovies);
+    // setFavMoviesList(tempFavMovies);
+    console.log("movies from storage", tempFavMovies);
+  }
+
+  useEffect(() => {
+    setFavMoviesList(tempFavMovies);
+  }, []);
+
+  const addRemoveFavs = (id, title, poster_path, overview, backdrop_path) => {
+    const movieData = { id, title, poster_path, overview, backdrop_path };
+    console.log(movieData.title);
+
+    const found = tempFavMovies.find((e) => e.id === id);
+    console.log("found", found);
+    if (!found) {
+      tempFavMovies.push(movieData);
+      localStorage.setItem("favMovies", JSON.stringify(tempFavMovies));
+      setFavMoviesList(tempFavMovies);
+      console.log("Se agregó la película", tempFavMovies);
+    } else {
+      tempFavMovies = tempFavMovies.filter((e) => e.id !== id);
+      localStorage.setItem("favMovies", JSON.stringify(tempFavMovies));
+      setFavMoviesList(tempFavMovies);
+      console.log("Se eliminó la película", tempFavMovies);
+    }
+    console.log("local Storage", localStorage.getItem("favMovies"));
   };
 
   return (
@@ -51,6 +83,17 @@ function App() {
           element={
             <ProtectedRoute>
               <com.Resultados addRemoveFavs={addRemoveFavs} />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/favorites"
+          element={
+            <ProtectedRoute>
+              <com.Favorites
+                addRemoveFavs={addRemoveFavs}
+                favMoviesList={favMoviesList}
+              />
             </ProtectedRoute>
           }
         />

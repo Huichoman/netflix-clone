@@ -48,7 +48,7 @@ export const Login = () => {
       .post("http://challenge-react.alkemy.org", { email, password })
       .then((res) => {
         const { token } = res.data;
-        localStorage.setItem("token", token);
+        sessionStorage.setItem("token", token);
         navigate("/listado");
       });
   };
