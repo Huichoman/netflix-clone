@@ -42,8 +42,6 @@ export const Login = () => {
       return;
     }
 
-    // Swal.fire("Datos enviados correctamente", "", "success");
-
     axios
       .post("http://challenge-react.alkemy.org", { email, password })
       .then((res) => {

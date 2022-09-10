@@ -78,14 +78,6 @@ export const Favorites = ({ favMoviesList, addRemoveFavs }) => {
               />
               <h3>{title} </h3>
               <Link to={`/moviedetail?movieID=${id}`}>View detail</Link>
-              {/* <div>
-                <button
-                  className={styles.modalButton}
-                  onClick={() => swalertModalTest(id)}
-                >
-                  Test
-                </button>
-              </div> */}
             </div>
           )
         )}
