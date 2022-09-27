@@ -43,7 +43,10 @@ export const Login = () => {
     }
 
     axios
-      .post("http://challenge-react.alkemy.org", { email, password })
+      .post(
+        "https://cors-everywhere.herokuapp.com/http://challenge-react.alkemy.org",
+        { email, password }
+      )
       .then((res) => {
         const { token } = res.data;
         sessionStorage.setItem("token", token);
