@@ -76,8 +76,13 @@ export const Favorites = ({ favMoviesList, addRemoveFavs }) => {
                 className={styles.cardImage}
                 alt="movie img"
               />
-              <h3>{title} </h3>
-              <Link to={`/moviedetail?movieID=${id}`}>View detail</Link>
+              <h3 className={styles.movieTitle}>{title} </h3>
+              <Link
+                className={styles.viewDetail}
+                to={`/moviedetail?movieID=${id}`}
+              >
+                View detail
+              </Link>
             </div>
           )
         )}

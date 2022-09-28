@@ -113,12 +113,12 @@ export const MovieDetail = () => {
                   <h3 className={styles.overviewText}>
                     {movieDetail.overview}
                   </h3>
-                  <button
+                  {/* <button
                     className={styles.modalButton}
                     onClick={swalertModalTest}
                   >
                     Test
-                  </button>
+                  </button> */}
                 </div>
                 <div className={styles.rightDiv}>
                   <h1>Aimi Memo</h1>

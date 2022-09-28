@@ -14,8 +14,8 @@ import { useAuthState } from "react-firebase-hooks/auth";
 const ProtectedRoute = ({ children }) => {
   // const swalert = withReactContent(Swal);
 
-  const [user, loading, error] = useAuthState(auth);
-  const token = sessionStorage.getItem("token");
+  const [user] = useAuthState(auth);
+  // const token = sessionStorage.getItem("token");
   if (!user) {
     return <Navigate to="/" replace />;
   }

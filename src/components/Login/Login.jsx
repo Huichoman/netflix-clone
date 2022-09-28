@@ -36,27 +36,68 @@ export const Login = () => {
     console.log("email: ", email);
     console.log("password: ", password);
     if (email === "" || password === "") {
-      swalert.fire(
-        "Oops!",
-        "Los campos email y password no se puede dejar vacíos",
-        "warning"
-      );
+      swalert.fire();
+      swalert.fire({
+        customClass: {
+          popup: [styles.swalertPopup],
+          title: [styles.swalertTitle],
+          htmlContainer: [styles.swalertHtml],
+          actions: [styles.swalertActions],
+          confirmButton: [styles.swalertConfirmButton],
+        },
+        showClass: {
+          popup: `
+          animate__animated
+          animate__zoomIn
+          animate__faster
+        `,
+        },
+        hideClass: {
+          popup: "animate__animated animate__flipOutX",
+        },
+        title: "Error",
+        text: "Los campos no se deben de dejar vacíos",
+        backdrop: false,
+        buttonsStyling: false,
+      });
       console.log("Los campos email y password no se puede dejar vacíos");
       return;
     }
     if (email !== "" && !regexEmail.test(email)) {
-      swalert.fire("Oops!", "Debes ingresar un email válido", "warning");
+      swalert.fire();
+      swalert.fire({
+        customClass: {
+          popup: [styles.swalertPopup],
+          title: [styles.swalertTitle],
+          htmlContainer: [styles.swalertHtml],
+          actions: [styles.swalertActions],
+          confirmButton: [styles.swalertConfirmButton],
+        },
+        showClass: {
+          popup: `
+          animate__animated
+          animate__zoomIn
+          animate__faster
+        `,
+        },
+        hideClass: {
+          popup: "animate__animated animate__flipOutX",
+        },
+        title: "Oops!",
+        text: "Debes ingresar un email válido",
+        backdrop: false,
+        buttonsStyling: false,
+      });
+
       console.log("Debes ingresar un email válido");
       return;
     }
 
-    // if (email !== "challenge@alkemy.org" || password !== "react") {
-    //   swalert.fire("Opps!", "Credenciales incorrectas", "warning");
-    //   console.log("Credenciales incorrectas");
-    //   return;
-    // }
-    if (!user) registerWithEmailAndPassword(email, password);
-    else logInWithEmailAndPassword(email, password);
+    logInWithEmailAndPassword(email, password);
+
+    // if (!user) registerWithEmailAndPassword(email, password);
+    // else logInWithEmailAndPassword(email, password);
+
     // axios
     //   .post(
     //     "https://cors-everywhere.herokuapp.com/http://challenge-react.alkemy.org",
@@ -75,14 +116,14 @@ export const Login = () => {
         <form onSubmit={submitHandler} className={styles.LoginForm}>
           <h2>Sign In</h2>
           <label>
-            <span>Correo electrónico:</span>
+            {/* <span>Correo electrónico:</span> */}
             <br />
             <input type="text" name="email" placeholder="Email" required />
             <br />
           </label>
 
           <label>
-            <span>Contraseña:</span>
+            {/* <span>Contraseña:</span> */}
             <br />
             <input type="password" name="password" placeholder="Password" />
           </label>

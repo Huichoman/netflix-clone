@@ -4,8 +4,11 @@ import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import "animate.css";
 import { Search } from "../Search/Search";
+import { auth } from "../../firebase";
+import { useAuthState } from "react-firebase-hooks/auth";
 
 export const Header = () => {
+  const [user] = useAuthState(auth);
   const token = sessionStorage.getItem("token");
   const swalert = withReactContent(Swal);
 
@@ -16,8 +19,8 @@ export const Header = () => {
     e.preventDefault();
     console.log(e);
     console.log("onHandleClick token", token);
-    if (!token) {
-      console.log("Sin acceso compadre");
+    if (!user) {
+      swalert.fire();
       swalert.fire({
         customClass: {
           popup: [styles.swalertPopup],
@@ -38,7 +41,7 @@ export const Header = () => {
         },
         title: "Error",
         text: "Necesitas loguearte para acceder a este contenido",
-        backdrop: false,
+        backdrop: true,
         buttonsStyling: false,
       });
       return;

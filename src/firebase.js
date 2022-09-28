@@ -35,8 +35,10 @@ const logInWithEmailAndPassword = async (email, password) => {
   try {
     await signInWithEmailAndPassword(auth, email, password);
   } catch (err) {
-    console.error(err);
-    alert(err.message);
+    // console.log("Error > ", err.name);
+    // alert(err.message);
+    if (err.message === "Firebase: Error (auth/user-not-found).")
+      registerWithEmailAndPassword(email, password);
   }
 };
 
