@@ -109,6 +109,23 @@ div.fallback {
   position: absolute;
   right: 1rem;
   top: 1.4rem;
+  background-color: #3c3d3cd7;
+  border-radius: 50%;
+  border-style: none;
+  font-size: 1.8rem;  
+  color: rgba(255, 173, 22, 0.995);
+  cursor: pointer;
+  font-family: 'Noto Emoji', sans-serif;
+  text-align: center;
+
+}
+
+.delFavButton {
+  width: 2.5rem;
+  height: 2.5rem;
+  position: absolute;
+  right: 1rem;
+  top: 1.4rem;
   background-color: #a0a79da0;
   border-radius: 50%;
   border-style: none;

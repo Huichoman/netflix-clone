@@ -6,23 +6,31 @@ import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import { AnimatedPage } from "../AnimatedPage/AnimatedPage";
 
-export const Listado = ({ addRemoveFavs }) => {
+export const Listado = ({ addRemoveFavs, favMoviesList }) => {
   const swalert = withReactContent(Swal);
   const [moviesList, setMoviesList] = useState([]);
-  console.log("movieList", moviesList);
 
   useEffect(() => {
     const endPoint =
       "https://api.themoviedb.org/3/discover/movie?api_key=f5e25946824bad668b30933e6ba5d1e8&language=es-ES&sort_by=popularity.desc&include_adult=false&include_video=true&page=1&with_watch_monetization_types=flatrate";
     axios
       .get(endPoint)
-      .then((response) => setMoviesList(response.data.results))
+      .then((response) => {
+        response.data.results.forEach((movie) => {
+          movie.isfav = false;
+          favMoviesList.forEach((favMovie) => {
+            if (favMovie.id === movie.id) movie.isfav = true;
+          });
+        });
+
+        setMoviesList(response.data.results);
+      })
       .catch((error) => {
         // console.log(error);
         swalert.fire("Hubo un error", "Intenta más tarde");
       });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [favMoviesList]);
 
   const swalertModalTest = (id) => {
     const element = document.getElementById(id);
@@ -59,7 +67,7 @@ export const Listado = ({ addRemoveFavs }) => {
     });
   };
 
-  useEffect(() => {}, []);
+  useEffect(() => {}, [favMoviesList]);
 
   const handleAddRemoveFavs = () => {
     addRemoveFavs();
@@ -69,7 +77,7 @@ export const Listado = ({ addRemoveFavs }) => {
     <AnimatedPage>
       <div className={styles.listadoContainer}>
         {moviesList.map(
-          ({ id, title, poster_path, overview, backdrop_path }) => (
+          ({ id, title, poster_path, overview, backdrop_path, isfav }) => (
             <div key={id} className={styles.movieCardContainer} id={id}>
               <div className={styles.favBtnContainer}>
                 <button
@@ -82,7 +90,7 @@ export const Listado = ({ addRemoveFavs }) => {
                       backdrop_path
                     )
                   }
-                  className={styles.addFavButton}
+                  className={isfav ? styles.addFavButton : styles.delFavButton}
                 >
                   ★
                 </button>

@@ -4,6 +4,8 @@ import * as com from "./components";
 import { AnimatePresence } from "framer-motion";
 import styles from "./App.module.css";
 import { useEffect, useState } from "react";
+import { auth } from "./firebase";
+import { useAuthState } from "react-firebase-hooks/auth";
 
 // import Swal from "sweetalert2";
 // import withReactContent from "sweetalert2-react-content";
@@ -11,8 +13,10 @@ import { useEffect, useState } from "react";
 
 const ProtectedRoute = ({ children }) => {
   // const swalert = withReactContent(Swal);
+
+  const [user, loading, error] = useAuthState(auth);
   const token = sessionStorage.getItem("token");
-  if (!token) {
+  if (!user) {
     return <Navigate to="/" replace />;
   }
 
@@ -36,14 +40,29 @@ function App() {
     setFavMoviesList(tempFavMovies);
   }, []);
 
-  const addRemoveFavs = (id, title, poster_path, overview, backdrop_path) => {
-    const movieData = { id, title, poster_path, overview, backdrop_path };
-    console.log(movieData.title);
-
+  const addRemoveFavs = (
+    id,
+    title,
+    poster_path,
+    overview,
+    backdrop_path,
+    isfav
+  ) => {
+    const movieData = {
+      id,
+      title,
+      poster_path,
+      overview,
+      backdrop_path,
+      isfav,
+    };
+    console.log(movieData.title, movieData.isfav);
     const found = tempFavMovies.find((e) => e.id === id);
     console.log("found", found);
     if (!found) {
+      movieData.isfav = true;
       tempFavMovies.push(movieData);
+
       localStorage.setItem("favMovies", JSON.stringify(tempFavMovies));
       setFavMoviesList(tempFavMovies);
       console.log("Se agregó la película", tempFavMovies);
@@ -66,7 +85,10 @@ function App() {
           path="/listado"
           element={
             <ProtectedRoute>
-              <com.Listado addRemoveFavs={addRemoveFavs} />
+              <com.Listado
+                addRemoveFavs={addRemoveFavs}
+                favMoviesList={favMoviesList}
+              />
             </ProtectedRoute>
           }
         />
@@ -82,7 +104,10 @@ function App() {
           path="/resultados"
           element={
             <ProtectedRoute>
-              <com.Resultados addRemoveFavs={addRemoveFavs} />
+              <com.Resultados
+                addRemoveFavs={addRemoveFavs}
+                favMoviesList={favMoviesList}
+              />
             </ProtectedRoute>
           }
         />

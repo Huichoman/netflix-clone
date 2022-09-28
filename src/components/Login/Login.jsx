@@ -1,14 +1,28 @@
 import axios from "axios";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./Login.module.css";
 import { AnimatedPage } from "../AnimatedPage/AnimatedPage";
+import {
+  auth,
+  logInWithEmailAndPassword,
+  registerWithEmailAndPassword,
+} from "../../firebase";
+import { useAuthState } from "react-firebase-hooks/auth";
 
 export const Login = () => {
   const swalert = withReactContent(Swal);
   const navigate = useNavigate();
+  const [user, loading, error] = useAuthState(auth);
 
+  useEffect(() => {
+    if (loading) {
+      return;
+    }
+    if (user) navigate("/listado");
+  }, [user, loading]);
   const submitHandler = (e) => {
     e.preventDefault();
 
@@ -36,22 +50,23 @@ export const Login = () => {
       return;
     }
 
-    if (email !== "challenge@alkemy.org" || password !== "react") {
-      swalert.fire("Opps!", "Credenciales incorrectas", "warning");
-      console.log("Credenciales incorrectas");
-      return;
-    }
-
-    axios
-      .post(
-        "https://cors-everywhere.herokuapp.com/http://challenge-react.alkemy.org",
-        { email, password }
-      )
-      .then((res) => {
-        const { token } = res.data;
-        sessionStorage.setItem("token", token);
-        navigate("/listado");
-      });
+    // if (email !== "challenge@alkemy.org" || password !== "react") {
+    //   swalert.fire("Opps!", "Credenciales incorrectas", "warning");
+    //   console.log("Credenciales incorrectas");
+    //   return;
+    // }
+    // registerWithEmailAndPassword(email, password);
+    logInWithEmailAndPassword(email, password);
+    // axios
+    //   .post(
+    //     "https://cors-everywhere.herokuapp.com/http://challenge-react.alkemy.org",
+    //     { email, password }
+    //   )
+    //   .then((res) => {
+    //     const { token } = res.data;
+    //     sessionStorage.setItem("token", token);
+    //     navigate("/listado");
+    //   });
   };
 
   return (
