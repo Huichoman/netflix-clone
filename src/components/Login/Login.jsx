@@ -55,8 +55,8 @@ export const Login = () => {
     //   console.log("Credenciales incorrectas");
     //   return;
     // }
-    // registerWithEmailAndPassword(email, password);
-    logInWithEmailAndPassword(email, password);
+    if (!user) registerWithEmailAndPassword(email, password);
+    else logInWithEmailAndPassword(email, password);
     // axios
     //   .post(
     //     "https://cors-everywhere.herokuapp.com/http://challenge-react.alkemy.org",
