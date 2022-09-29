@@ -19,8 +19,17 @@ html {
 }
  body {
     background-color: rgb(11, 11, 11);
+    padding-right: 0px!important;
  }
 
  html {
     overflow-y: scroll;
   }
+
+  .swal2-shown{
+    padding-right: 0px !important;
+  }
+  .iframe{
+    height: 30vh !important;
+    width: calc(30vh * 1.641) !important;
+}

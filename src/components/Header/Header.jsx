@@ -4,7 +4,7 @@ import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import "animate.css";
 import { Search } from "../Search/Search";
-import { auth } from "../../firebase";
+import { auth, logout } from "../../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 
 export const Header = () => {
@@ -17,12 +17,13 @@ export const Header = () => {
 
   const handleClick = (e) => {
     e.preventDefault();
-    console.log(e);
+    console.log("Target ID :", e.target.id);
     console.log("onHandleClick token", token);
     if (!user) {
       swalert.fire();
       swalert.fire({
         customClass: {
+          container: [styles.swalertContainer],
           popup: [styles.swalertPopup],
           title: [styles.swalertTitle],
           htmlContainer: [styles.swalertHtml],
@@ -41,27 +42,34 @@ export const Header = () => {
         },
         title: "Error",
         text: "Necesitas loguearte para acceder a este contenido",
-        backdrop: true,
+        backdrop: false,
         buttonsStyling: false,
+        scrollbarPadding: false,
       });
       return;
     }
     console.log("Hacia el listado");
-    navigate("/listado");
+    if (e.target.id === "headerListado") navigate("/listado");
+    if (e.target.id === "headerFavorites") navigate("/favorites");
   };
 
   return (
     <header>
       <nav>
         <div className={styles.headerDiv}>
-          <a href="/" className={styles.headerTitle}>
-            Netaflix
+          <a href="/" className={styles.headerTitle} id="netflix">
+            NETFLIX
           </a>
           <Link to="/">Home</Link>
-          <Link to="/listado" onClick={handleClick}>
+          <Link to="/listado" onClick={handleClick} id="headerListado">
             Listado
           </Link>
-          <Link to="/favorites">Favoritos</Link>
+          <Link to="/favorites" onClick={handleClick} id="headerFavorites">
+            Favoritos
+          </Link>
+          <Link to="/" onClick={logout}>
+            Logout
+          </Link>
           <div className={styles.push}>
             <Search />
           </div>

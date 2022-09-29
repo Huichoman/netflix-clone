@@ -2,10 +2,10 @@ import styles from "./MovieDetail.module.css";
 import { useEffect, useState } from "react";
 // import { Navigate } from "react-router-dom";
 import axios from "axios";
-
+import { MovieTrailer } from "../MovieTrailer/MovieTrailer";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
-let animationCounter = 0;
+let animationCounter = 4;
 export const MovieDetail = () => {
   // let token = localStorage.getItem("token");
 
@@ -49,7 +49,7 @@ export const MovieDetail = () => {
           `https://api.themoviedb.org/3/movie/${movieID}?api_key=${apiKey}&language=es-ES`
         ),
         axios.get(
-          `https://api.themoviedb.org/3/movie/${movieID}/videos?api_key=${apiKey}&language=es-ES`
+          `https://api.themoviedb.org/3/movie/${movieID}/videos?api_key=${apiKey}&language=en-EN`
         ),
       ])
       .then(
@@ -57,7 +57,7 @@ export const MovieDetail = () => {
           console.log("detailData", detailData);
           console.log("videoData", videoData);
           setMovieDetail(detailData.data);
-          setMovieTrailer(videoData.data.results);
+          setMovieTrailer(videoData.data.results[0].key);
         })
       );
 
@@ -86,13 +86,16 @@ export const MovieDetail = () => {
       hideClass: {
         popup: "animate__animated" + [animatedExits[animationCounter]],
       },
-      title: "José Santiago",
-      text: "Jugando con Sweetalert2",
+      html: <MovieTrailer trailerId={movieTrailer} />,
+
       backdrop: false,
+      showCloseButton: true,
+      showConfirmButton: false,
+      allowOutsideClick: true,
 
       // buttonsStyling: false,
     });
-    animationCounter++;
+    // animationCounter++;
     if (animationCounter === animatedEntrances.length) animationCounter = 0;
   };
 
@@ -113,15 +116,18 @@ export const MovieDetail = () => {
                   <h3 className={styles.overviewText}>
                     {movieDetail.overview}
                   </h3>
-                  {/* <button
-                    className={styles.modalButton}
-                    onClick={swalertModalTest}
-                  >
-                    Test
-                  </button> */}
+                  {movieTrailer && (
+                    <button
+                      className={styles.modalButton}
+                      onClick={swalertModalTest}
+                    >
+                      PLAY
+                    </button>
+                  )}
                 </div>
                 <div className={styles.rightDiv}>
-                  <h1>Aimi Memo</h1>
+                  {/* <MovieTrailer trailerId={movieTrailer} /> */}
+                  {/* <h1>Aimi Memo</h1> */}
                 </div>
               </div>
             </div>

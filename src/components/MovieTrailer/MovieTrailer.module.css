@@ -1,0 +1,23 @@
+.iframe{
+    height: 30vh !important;
+    width: calc(30vh * 1.641) !important;
+}
+
+#widget12 {
+    height: 30vh !important;
+    width: calc(30vh * 1.641) !important;
+}
+
+.embedContainer {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+}
+.embedContainer iframe {
+    position: absolute;
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
