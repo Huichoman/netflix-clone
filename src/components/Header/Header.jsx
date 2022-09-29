@@ -9,16 +9,16 @@ import { useAuthState } from "react-firebase-hooks/auth";
 
 export const Header = () => {
   const [user] = useAuthState(auth);
-  const token = sessionStorage.getItem("token");
+  // const token = sessionStorage.getItem("token");
   const swalert = withReactContent(Swal);
 
-  console.log("token", token);
+  // console.log("token", token);
   let navigate = useNavigate();
 
   const handleClick = (e) => {
     e.preventDefault();
-    console.log("Target ID :", e.target.id);
-    console.log("onHandleClick token", token);
+    // console.log("Target ID :", e.target.id);
+    // console.log("onHandleClick token", token);
     if (!user) {
       swalert.fire();
       swalert.fire({
@@ -48,7 +48,7 @@ export const Header = () => {
       });
       return;
     }
-    console.log("Hacia el listado");
+    // console.log("Hacia el listado");
     if (e.target.id === "headerListado") navigate("/listado");
     if (e.target.id === "headerFavorites") navigate("/favorites");
   };

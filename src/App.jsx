@@ -33,7 +33,7 @@ function App() {
   } else {
     tempFavMovies = JSON.parse(favMovies);
     // setFavMoviesList(tempFavMovies);
-    console.log("movies from storage", tempFavMovies);
+    // console.log("movies from storage", tempFavMovies);
   }
 
   useEffect(() => {
@@ -56,23 +56,23 @@ function App() {
       backdrop_path,
       isfav,
     };
-    console.log(movieData.title, movieData.isfav);
+    // console.log(movieData.title, movieData.isfav);
     const found = tempFavMovies.find((e) => e.id === id);
-    console.log("found", found);
+    // console.log("found", found);
     if (!found) {
       movieData.isfav = true;
       tempFavMovies.push(movieData);
 
       localStorage.setItem("favMovies", JSON.stringify(tempFavMovies));
       setFavMoviesList(tempFavMovies);
-      console.log("Se agregó la película", tempFavMovies);
+      // console.log("Se agregó la película", tempFavMovies);
     } else {
       tempFavMovies = tempFavMovies.filter((e) => e.id !== id);
       localStorage.setItem("favMovies", JSON.stringify(tempFavMovies));
       setFavMoviesList(tempFavMovies);
-      console.log("Se eliminó la película", tempFavMovies);
+      // console.log("Se eliminó la película", tempFavMovies);
     }
-    console.log("local Storage", localStorage.getItem("favMovies"));
+    // console.log("local Storage", localStorage.getItem("favMovies"));
   };
 
   return (

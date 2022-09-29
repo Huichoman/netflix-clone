@@ -5,7 +5,7 @@ import axios from "axios";
 import { MovieTrailer } from "../MovieTrailer/MovieTrailer";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
-let animationCounter = 4;
+let animationCounter = 2;
 export const MovieDetail = () => {
   // let token = localStorage.getItem("token");
 
@@ -39,8 +39,8 @@ export const MovieDetail = () => {
     " animate__lightSpeedOutRight",
   ];
 
-  console.log("movieDetail", movieDetail);
-  console.log("movieTrailer", movieTrailer);
+  // console.log("movieDetail", movieDetail);
+  // console.log("movieTrailer", movieTrailer);
 
   useEffect(() => {
     axios
@@ -54,10 +54,15 @@ export const MovieDetail = () => {
       ])
       .then(
         axios.spread((detailData, videoData) => {
-          console.log("detailData", detailData);
-          console.log("videoData", videoData);
+          let filterTrailer = [];
+          // console.log("detailData", detailData);
+          filterTrailer = videoData.data.results.filter(
+            (video) => video.type === "Trailer"
+          );
+          // console.log("videoData", videoData);
+          // console.log("Filter by Type>Trailer: ", filterTrailer);
           setMovieDetail(detailData.data);
-          setMovieTrailer(videoData.data.results[0].key);
+          setMovieTrailer(filterTrailer[0].key);
         })
       );
 
@@ -84,14 +89,14 @@ export const MovieDetail = () => {
         icon: "swal2-icon-show",
       },
       hideClass: {
-        popup: "animate__animated" + [animatedExits[animationCounter]],
+        popup: "animate__animated" + [animatedExits[4]],
       },
       html: <MovieTrailer trailerId={movieTrailer} />,
 
       backdrop: false,
       showCloseButton: true,
       showConfirmButton: false,
-      allowOutsideClick: true,
+      allowOutsideClick: false,
 
       // buttonsStyling: false,
     });

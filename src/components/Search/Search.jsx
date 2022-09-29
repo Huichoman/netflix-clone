@@ -10,7 +10,7 @@ export const Search = () => {
   const handleOnSubmit = (e) => {
     e.preventDefault();
     const movieName = e.target.movieName.value.trim();
-    console.log("MovieName", movieName);
+    // console.log("MovieName", movieName);
 
     if (movieName.length < 1) {
       swalert.fire();

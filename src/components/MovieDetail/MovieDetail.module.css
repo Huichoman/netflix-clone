@@ -98,8 +98,8 @@
     border-width: 0px !important;
     border-style: solid !important;
     background-color: var(--color-swalert-bg) !important;
-    height: 65vh !important;
-    width: calc(65vh * 1.641) !important;
+    height: 35vw !important;
+    width: calc(35vw * 1.641) !important;
     /* position: absolute !important;
     left: 10px !important;
     top: 150px !important; */
@@ -147,7 +147,7 @@
 }
 
 .iframe{
-  height: 30vh !important;
-  width: calc(30vh * 1.641) !important;
+  height: 30vw !important;
+  width: calc(30vw * 1.641) !important;
 }
 

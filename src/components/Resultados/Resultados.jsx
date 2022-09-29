@@ -10,7 +10,7 @@ export const Resultados = ({ addRemoveFavs, favMoviesList }) => {
 
   const [searchParams, setSearchParams] = useSearchParams();
   const keyword = searchParams.get("keyword");
-  console.log("KEYWORD :", keyword);
+  // console.log("KEYWORD :", keyword);
 
   useEffect(() => {
     const endpoint = `https://api.themoviedb.org/3/search/movie?api_key=f5e25946824bad668b30933e6ba5d1e8&language=es-ES&query=${keyword}&page=1&include_adult=false`;
@@ -25,7 +25,7 @@ export const Resultados = ({ addRemoveFavs, favMoviesList }) => {
       setMovieList(
         response.data.results.filter((movie) => movie.backdrop_path != null)
       );
-      console.log("RESULTADOS : ", response.data.results);
+      // console.log("RESULTADOS : ", response.data.results);
     });
   }, [keyword, favMoviesList]);
 

@@ -34,12 +34,12 @@ export const Listado = ({ addRemoveFavs, favMoviesList }) => {
 
   const swalertModalTest = (id) => {
     const element = document.getElementById(id);
-    console.log("elemento", element);
+    // console.log("elemento", element);
     let coords = element.getBoundingClientRect();
     document.documentElement.style.cssText =
       "--posLeft: " + coords.left + "px; --posTop: " + coords.top + "px;";
 
-    console.log("coordenadas", coords);
+    // console.log("coordenadas", coords);
     swalert.fire();
     swalert.fire({
       customClass: {
