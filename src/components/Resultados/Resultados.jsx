@@ -2,7 +2,7 @@ import styles from "./Resultados.module.css";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
-
+import { AnimatedPage } from "../AnimatedPage/AnimatedPage";
 export const Resultados = ({ addRemoveFavs, favMoviesList }) => {
   const [movieList, setMovieList] = useState([]);
   // const query = new URLSearchParams(window.location.search);
@@ -30,42 +30,44 @@ export const Resultados = ({ addRemoveFavs, favMoviesList }) => {
   }, [keyword, favMoviesList]);
 
   return (
-    <div className={styles.listadoContainer}>
-      {movieList.map(
-        ({ title, backdrop_path, id, poster_path, overview, isfav }) => (
-          <div className={styles.movieCardContainer} key={id} id={id}>
-            <div className={styles.favBtnContainer}>
-              <button
-                onClick={() =>
-                  addRemoveFavs(
-                    id,
-                    title,
-                    poster_path,
-                    overview,
-                    backdrop_path,
-                    isfav
-                  )
-                }
-                className={isfav ? styles.addFavButton : styles.delFavButton}
+    <AnimatedPage>
+      <div className={styles.listadoContainer}>
+        {movieList.map(
+          ({ title, backdrop_path, id, poster_path, overview, isfav }) => (
+            <div className={styles.movieCardContainer} key={id} id={id}>
+              <div className={styles.favBtnContainer}>
+                <button
+                  onClick={() =>
+                    addRemoveFavs(
+                      id,
+                      title,
+                      poster_path,
+                      overview,
+                      backdrop_path,
+                      isfav
+                    )
+                  }
+                  className={isfav ? styles.addFavButton : styles.delFavButton}
+                >
+                  ★
+                </button>
+              </div>
+              <img
+                src={`https://image.tmdb.org/t/p/w342/${backdrop_path}`}
+                className={styles.cardImage}
+                alt="movie img"
+              />
+              <h3 className={styles.movieTitle}>{title} </h3>
+              <Link
+                className={styles.viewDetail}
+                to={`/moviedetail?movieID=${id}`}
               >
-                ★
-              </button>
+                View detail
+              </Link>
             </div>
-            <img
-              src={`https://image.tmdb.org/t/p/w342/${backdrop_path}`}
-              className={styles.cardImage}
-              alt="movie img"
-            />
-            <h3 className={styles.movieTitle}>{title} </h3>
-            <Link
-              className={styles.viewDetail}
-              to={`/moviedetail?movieID=${id}`}
-            >
-              View detail
-            </Link>
-          </div>
-        )
-      )}
-    </div>
+          )
+        )}
+      </div>
+    </AnimatedPage>
   );
 };

@@ -5,6 +5,7 @@ import axios from "axios";
 import { MovieTrailer } from "../MovieTrailer/MovieTrailer";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
+import { AnimatedPage } from "../AnimatedPage/AnimatedPage";
 let animationCounter = 2;
 export const MovieDetail = () => {
   // let token = localStorage.getItem("token");
@@ -105,7 +106,7 @@ export const MovieDetail = () => {
   };
 
   return (
-    <>
+    <AnimatedPage>
       {movieDetail && (
         <>
           <div className={styles.movieDetailContainer}>
@@ -139,6 +140,6 @@ export const MovieDetail = () => {
           </div>
         </>
       )}
-    </>
+    </AnimatedPage>
   );
 };
