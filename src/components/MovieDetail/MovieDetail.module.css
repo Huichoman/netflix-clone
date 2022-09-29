@@ -98,8 +98,8 @@
     border-width: 0px !important;
     border-style: solid !important;
     background-color: var(--color-swalert-bg) !important;
-    height: 65vh;
-    width: calc(65vh * 1.641);
+    height: 65vh !important;
+    width: calc(65vh * 1.641) !important;
     /* position: absolute !important;
     left: 10px !important;
     top: 150px !important; */
